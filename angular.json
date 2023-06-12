@@ -27,7 +27,11 @@
             "styles": [
               "src/styles.css"
             ],
-            "scripts": []
+            "scripts": [
+              "../node_modules/jquery/dist/jquery.min.js",
+              "../node_modules/typed.js/dist/typed.cjs",
+              "../node_modules/typed.js/dist/typed.umd.js"
+            ]
           },
           "configurations": {
             "production": {
