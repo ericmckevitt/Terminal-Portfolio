@@ -1,0 +1,93 @@
+.terminal-window {
+    text-align: left;
+    width: 600px;
+    height: 360px;
+    border-radius: 10px;
+    margin: auto;
+    position: relative;
+}
+
+.terminal-window header {
+    background: #E0E8F0;
+    height: 30px;
+    border-radius: 8px 8px 0 0;
+    padding-left: 10px;
+}
+
+.terminal-window header .button {
+    width: 12px;
+    height: 12px;
+    margin: 10px 4px 0 0;
+    display: inline-block;
+    border-radius: 8px;
+}
+
+.terminal-window header .button.green {
+    background: #3BB662;
+}
+
+.terminal-window header .button.yellow {
+    background: #E5C30F;
+}
+
+.terminal-window header .button.red {
+    background: #E75448;
+}
+
+.terminal-window section.terminal {
+    color: white;
+    font-family: Menlo, Monaco, "Consolas", "Courier New", "Courier";
+    font-size: 11pt;
+    background: #30353A;
+    padding: 10px;
+    box-sizing: border-box;
+    position: absolute;
+    width: 100%;
+    top: 30px;
+    bottom: 0;
+    overflow: auto;
+
+    -webkit-box-shadow: 10px 10px 71px 0px rgba(0,0,0,0.5);
+-moz-box-shadow: 10px 10px 71px 0px rgba(0,0,0,0.5);
+box-shadow: 10px 10px 71px 0px rgba(0,0,0,0.5);
+}
+
+.terminal-data { display: none; }
+.terminal-window .gray { color: gray; }
+.terminal-window .green { color: green;}
+.terminal-window .red { color: rgba(214, 13, 13, 0.722); }
+
+#terminal-line {
+    position: relative;
+}
+
+#user-input {
+    background-color: transparent;
+    outline: none;
+    border: none;
+    
+    padding-left: 0px;
+    margin-left: 0px;
+    
+    color: white;
+    font-family: Menlo, Monaco, "Consolas", "Courier New", "Courier";
+    font-size: 11pt;
+    
+    caret-color: transparent;
+    
+    position: absolute; 
+    left: 17px;
+    top: -1px;
+    
+    height: inherit;
+}
+
+section.terminal, .terminal-window-header {
+    -webkit-transition: all 0.5s ease-in-out;
+    -moz-transition: all 0.5s ease-in-out;
+    transition: all 0.5s ease-in-out;
+}
+
+.manual-control-cursor {
+    position: absolute; 
+}
