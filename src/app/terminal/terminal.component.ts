@@ -195,6 +195,13 @@ function enterUserInputMode() {
 function submitCommand(command: string) {
   console.log("Running command: " + command);
 
+  console.log("HISTORY:" + $('.history').html());
+
+  // If $(.history).html() ends in two <br> tags, remove one of them.
+  if ($('.history').html()!.endsWith('<br><br>')) {
+    $('.history').html($('.history').html()!.slice(0, -4));
+  }
+
   // Grab the history
   var historyElem = $('.history').html();          
   var history = historyElem ? [historyElem] : [];
@@ -210,6 +217,7 @@ function submitCommand(command: string) {
     // Handle output
     var output = '<span style="color: gray">README.md<br>index.html<br>main.css<br>main.js<br>package.json<br>tests</span>';
     history.push(output);
+    history.push("<br>");
   } else if (command == "clear") {
     history = [];
   } else {
@@ -217,10 +225,18 @@ function submitCommand(command: string) {
     let first_word = command.split(' ')[0];
     var output = `<span style="color: rgba(214, 13, 13, 0.722);">Command not found: ${first_word}</span>`;
     history.push(output);
+    history.push("<br>");
   }
 
   // Update the history
+
+  
   $('.history').html(history.join('<br>'));
+
+
+  // Refresh the terminal
+  $('.history').html($('.history').html());
+
 
   // Scroll to the bottom of the screen
   $('section.terminal').scrollTop($('section.terminal').height() as number);
