@@ -1,0 +1,120 @@
+:root {
+    --purple: rgb(123, 31, 162);
+    --violet: rgb(103, 58, 183);
+    --pink: rgb(244, 143, 177);
+}
+
+@font-face {
+    font-family: "San Francisco";
+    font-weight: 400;
+    src: url("https://applesocial.s3.amazonaws.com/assets/styles/fonts/sanfrancisco/sanfranciscodisplay-regular-webfont.woff");
+}
+
+section#landing-page {
+    position: relative;
+    height: 100vh;
+    width: 100%;
+    overflow: hidden;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+section#landing-page h1 {
+    margin: auto;
+    font-size:3em !important;
+    color: white;
+    /* font-family: "Rubik", sans-serif; */
+    font-family: "San Francisco", sans-serif;
+    font-size: clamp(2em, 2vw, 4em);
+    /* font-weight: 450; */
+    text-align: center;
+    /* margin-bottom: 0.8em; */
+    /* margin-bottom: 2em; */
+
+    text-align: left; 
+    line-height: 1.4em;
+    margin-bottom: 0.4em;
+}
+
+section#landing-page * {
+    /* border: 0.5px dashed red; */
+}
+
+@keyframes background-pan {
+    from {
+        background-position: 0% center;
+    }
+
+    to {
+        background-position: -200% center;
+    }
+}
+
+.magic {
+    animation: background-pan 3s linear infinite;
+    background: linear-gradient(
+        to right,
+        rgb(123, 31, 162),
+        rgb(103, 58, 183),
+        rgb(244, 143, 177),
+        rgb(123, 31, 162)
+    );
+    background-size: 200%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    white-space: nowrap;
+}
+
+/* Blob CSS */
+
+@keyframes rotate {
+    0% {
+        transform: rotate(0deg);
+    }
+    
+    50% {
+        transform: scale(1) scaleY(1.5);
+    }
+    
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+#blob {
+    background-color: white;
+    height: 500px;
+    aspect-ratio: 1;
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+    translate: -50% -50%; 
+    border-radius: 50%;
+
+    background: linear-gradient(
+        to right, 
+        lightyellow,
+        mediumpurple
+    );
+
+    animation: rotate 20s infinite;
+
+    filter: blur(200px);
+}
+
+#blur {
+    height: 100%;
+    width: 100%;
+    position: absolute; 
+    z-index: 2; 
+    backdrop-filter: blur(300px);
+}
+
+body {
+    background-color: rgb(10,10,10);
+}

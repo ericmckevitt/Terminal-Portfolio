@@ -13,18 +13,35 @@ export class TerminalComponent implements OnInit {
   userInput: HTMLElement | null = document.getElementById('user-input');
 
   data = [
+    // { 
+    //   action: 'type',
+    //   strings: ["npm install -g portfolio^400"],
+    //   output: '<span class="gray" style="color: gray">+emckevitt@0.10.2 installed</span><br>&nbsp;',
+    //   postDelay: 1000
+    // },
     { 
       action: 'type',
       strings: ["npm install -g portfolio^400"],
-      output: '<span class="gray" style="color: gray">+emckevitt@0.10.2 installed</span><br>&nbsp;',
+      output: '<span class="gray" style="color: gray">+portfolio@0.1.2 installed</span><br>&nbsp;',
       postDelay: 1000
     },
     { 
         action: 'type',
-        strings: ["cd tests^400"],
-        output: '<br>',
-        postDelay: 1000
+        strings: ['echo "go ahead. type a command."^5',
+          'echo "go ahead. type a command. it actually works!"^1',
+          'echo "go ahead. type a command."'],
+        output: '<span class="gray" style="color: gray">go ahead. type a command.</span><br>&nbsp;',
+        postDelay: 1000,
+        typeSpeed: 30
     },
+    { 
+      action: 'type',
+      strings: ['echo \'Type \"help\" to get started\'^400'],
+      // output: '<span class="gray" style="color: gray">Type</span> <span class="magic">"help"</span><span> to get started</span><br>&nbsp;',
+      output: '<span class="gray" style="color: gray">Type</span> <span style="color: rgb(244, 143, 177) !important">"help"</span><span> to get started</span><br>&nbsp;',
+      postDelay: 1000,
+      
+  },
     // { 
     //     action: 'type',
     //     strings: ["that was easy!", ''],
@@ -97,8 +114,9 @@ export class TerminalComponent implements OnInit {
         // Type the message
         new Typed('.prompt', {
           strings: script.strings,
-          typeSpeed: 50,
+          typeSpeed: script.typeSpeed ?? 50,
           backSpeed: 20,
+          smartBackspace: true,
           onComplete: () => {
 
             // Grab the history
@@ -195,8 +213,6 @@ function enterUserInputMode() {
 function submitCommand(command: string) {
   console.log("Running command: " + command);
 
-  console.log("HISTORY:" + $('.history').html());
-
   // If $(.history).html() ends in two <br> tags, remove one of them.
   if ($('.history').html()!.endsWith('<br><br>')) {
     $('.history').html($('.history').html()!.slice(0, -4));
@@ -218,25 +234,21 @@ function submitCommand(command: string) {
     var output = '<span style="color: gray">README.md<br>index.html<br>main.css<br>main.js<br>package.json<br>tests</span>';
     history.push(output);
     history.push("<br>");
+
   } else if (command == "clear") {
     history = [];
+
   } else {
     // Handle output
     let first_word = command.split(' ')[0];
     var output = `<span style="color: rgba(214, 13, 13, 0.722);">Command not found: ${first_word}</span>`;
     history.push(output);
     history.push("<br>");
+    
   }
 
   // Update the history
-
-  
   $('.history').html(history.join('<br>'));
-
-
-  // Refresh the terminal
-  $('.history').html($('.history').html());
-
 
   // Scroll to the bottom of the screen
   $('section.terminal').scrollTop($('section.terminal').height() as number);
