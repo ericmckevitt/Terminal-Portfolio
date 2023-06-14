@@ -1,6 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 body {
-    background-color: rgb(10,10,10);    
+    background-color: rgb(10, 10, 10);    
     margin: 0;
     padding: 0;
 }
@@ -27,9 +27,16 @@ body {
     white-space: nowrap;
 
     font-size: 1em !important;
-    /* letter-spacing: 0.2em; */
     font-weight: bold;
-    /* font-family: 'Courier New', Courier, monospace; */
-    /* font-family: "San Francisco", sans-serif;
-    font-weight: 600; */
+}
+
+/* Any text that is highlighted should be rgb(244, 143, 177) */
+::selection {
+    background: rgb(244, 143, 177);
+    color: white;
+}
+
+.magic::selection {
+    color: white;
+    -webkit-text-fill-color: white;
 }

@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import Typed from 'typed.js';
 
+
+//// Note: Maybe headline can be Full-Stack <Developer/>,
+////                             named Eric McKevitt.
+
 @Component({
   selector: 'app-terminal',
   templateUrl: './terminal.component.html',
@@ -38,9 +42,8 @@ export class TerminalComponent implements OnInit {
       action: 'type',
       strings: ['echo \'Type \"help\" to get started\'^400'],
       // output: '<span class="gray" style="color: gray">Type</span> <span class="magic">"help"</span><span> to get started</span><br>&nbsp;',
-      output: '<span class="gray" style="color: gray">Type</span> <span style="color: rgb(244, 143, 177) !important">"help"</span><span> to get started</span><br>&nbsp;',
+      output: '<span class="gray" style="color: gray">Type</span> <span style="color: rgb(244, 143, 177) !important">"help"</span><span style="color: gray;"> to get started</span><br>&nbsp;',
       postDelay: 1000,
-      
   },
     // { 
     //     action: 'type',
@@ -231,13 +234,19 @@ function submitCommand(command: string) {
 
   if (command == "ls") {
     // Handle output
-    var output = '<span style="color: gray">README.md<br>index.html<br>main.css<br>main.js<br>package.json<br>tests</span>';
+    var output = '<span style="color: gray">Home<br>About<br>Professional Experience<br>Projects<br>Skills<br>Contact</span>';
     history.push(output);
     history.push("<br>");
 
   } else if (command == "clear") {
     history = [];
 
+  } else if (command == "help" || command == '\"help\"') {
+    // var output = '<span style="color: gray">Glad you asked.<br><br>&#215; You can type "ls" to see the available page sections.<br>&#215; Typing "cd" followed by a section name will take you there!<br>&#215; If the terminal gets crowded, just type "clear".<br>&#215; For a list of all commands, type "commands".<br><br>Or you can just navigate the website manually, I guess. See you around!</span>';
+    var output = '<span style="color: gray">Glad you asked.<br><br>&#215; You can type </span><span style="color: rgb(244, 143, 177) !important;">"ls"</span><span style="color: gray"> to see the available page sections.<br>&#215; Typing </span><span style="color: rgb(244, 143, 177) !important;">"cd"</span><span style="color: gray;"> followed by a section name will take you there!<br>&#215; If the terminal gets crowded, just type </span><span style="color: rgb(244, 143, 177) !important;">"clear"</span><span style="color: gray;">.<br>&#215; For a list of all commands, type </span><span style="color: rgb(244, 143, 177) !important;">"commands"</span><span style="color: gray">.<br><br>Or you can just navigate the website manually, I guess. See you around!</span>';
+    history.push(output);
+    history.push("<br>");
+  
   } else {
     // Handle output
     let first_word = command.split(' ')[0];
