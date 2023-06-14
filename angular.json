@@ -28,9 +28,9 @@
               "src/styles.css"
             ],
             "scripts": [
-              "../node_modules/jquery/dist/jquery.min.js",
-              "../node_modules/typed.js/dist/typed.cjs",
-              "../node_modules/typed.js/dist/typed.umd.js"
+              "./node_modules/jquery/dist/jquery.min.js",
+              "./node_modules/typed.js/dist/typed.cjs",
+              "./node_modules/typed.js/dist/typed.umd.js"
             ]
           },
           "configurations": {

@@ -78,6 +78,7 @@ export class TerminalComponent implements OnInit {
   displayOnTerminal(data: any[], pos: number) {
     // Disable the input
     $('#user-input').prop('disabled', true);
+    $('#user-input').css('opacity', '0');
 
     // script is the current object in the data array
     var script = data[pos];
@@ -131,7 +132,7 @@ export class TerminalComponent implements OnInit {
               console.log("End of data array"); 
               
               // TODO: Let user type in the terminal
-
+              enterUserInputMode();
             }
           }
         })
@@ -139,4 +140,58 @@ export class TerminalComponent implements OnInit {
         break;
     }
   }
+}
+
+function enterUserInputMode() {
+  console.log("Entering user input mode");
+
+  // Enable the input
+  $('#user-input').prop('disabled', false);
+  $('#user-input').css('opacity', '1');
+
+  let input = document.querySelector('#user-input')! as HTMLInputElement;
+  let cursor = document.querySelector('.typed-cursor')! as HTMLElement;
+
+  function adjustInputWidth() {
+    // const input = document.querySelector('#user-input') as HTMLInputElement;
+    input.style.width = input.value.length > 0 ? `${input.value.length}ch` : '0px';
+
+    // Increase width of input by 1px
+    input.style.width = `${input.offsetWidth + 1}px`;
+  }
+
+  input.addEventListener('input', (event) => {
+    adjustInputWidth();
+  });
+
+  $('#user-input').focus();
+
+  // Hide the cursor
+  $('.typed-cursor').css('opacity', '0');
+
+  // Set the width of the input to 0px
+  $('#user-input').css('width', '0px');
+
+  // Add a click listener to terminal window
+  $('section.terminal').click(function() {
+    // Shift focus to the input with id 'user-input'
+    $('#user-input').focus();
+  });
+
+  // Add an event listener to the input for any keypress
+  $('#user-input').keypress(function(e) {
+    // console.log("Key pressed: " + e.which);
+
+    // If ENTER is pressed
+    if (e.which == 13) {
+        console.log("ENTER pressed");
+
+        // Get the value of the input
+        submitCommand($('#user-input').val() as string);
+    }
+  });
+}
+
+function submitCommand(command: string) {
+  console.log("Running command: " + command);
 }
