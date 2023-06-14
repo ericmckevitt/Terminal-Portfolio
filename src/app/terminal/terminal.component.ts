@@ -194,4 +194,43 @@ function enterUserInputMode() {
 
 function submitCommand(command: string) {
   console.log("Running command: " + command);
+
+  // Grab the history
+  var historyElem = $('.history').html();          
+  var history = historyElem ? [historyElem] : [];
+
+  // Logging the command
+  console.log("Logging: " + '$ ' + command);
+  history.push('$ ' + command);
+
+  // Clear the prompt
+  $('.prompt').html('');
+
+  if (command == "ls") {
+    // Handle output
+    var output = '<span style="color: gray">README.md<br>index.html<br>main.css<br>main.js<br>package.json<br>tests</span>';
+    history.push(output);
+  } else if (command == "clear") {
+    history = [];
+  } else {
+    // Handle output
+    let first_word = command.split(' ')[0];
+    var output = `<span style="color: rgba(214, 13, 13, 0.722);">Command not found: ${first_word}</span>`;
+    history.push(output);
+  }
+
+  // Update the history
+  $('.history').html(history.join('<br>'));
+
+  // Scroll to the bottom of the screen
+  $('section.terminal').scrollTop($('section.terminal').height() as number);
+
+  // Clear the input
+  $('#user-input').val('');
+
+  // Shift focus to the input with id 'user-input'
+  $('#user-input').focus();
+
+  // Update width of input
+  $('#user-input').css('width', '0px');
 }
