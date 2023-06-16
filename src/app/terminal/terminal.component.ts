@@ -219,6 +219,23 @@ function submitCommand(command: string) {
   var historyElem = $('.history').html();          
   var history = historyElem ? [historyElem] : [];
 
+  // Search the hisotry for any 2 consecutive <br> tags
+  var index = historyElem?.search('<br><br>');
+  if (index != -1) {
+    console.log("Found two consecutive <br> tags");
+
+    console.log("History before: " + historyElem);
+
+    // Remove the first <br> tag
+    historyElem = historyElem?.replace('<br><br>', '<br>');
+    history = [historyElem!];
+
+    console.log("Setting history to: " + historyElem);
+
+    // Set the history
+    $('.history').html(historyElem!);
+  }
+
   // Logging the command
   console.log("Logging: " + '$ ' + command);
   history.push('$ ' + command);
@@ -228,7 +245,7 @@ function submitCommand(command: string) {
 
   if (command == "ls") {
     // Handle output
-    var output = '<span style="color: gray">Home<br>About<br>Professional Experience<br>Projects<br>Skills<br>Contact</span>';
+    var output = '<span style="color: gray">Home<br>About<br>Education<br>Experience<br>Projects<br>Skills<br>Contact</span>';
     history.push(output);
     history.push("<br>");
 
@@ -241,6 +258,29 @@ function submitCommand(command: string) {
     history.push(output);
     history.push("<br>");
   
+  } else if (command == "commands") {
+    var output = '<span style="color: gray">&#215; <span/><span style="color: rgb(244, 143, 177) !important;">ls</span><span style="color: gray"><br>&#215; </span><span style="color: rgb(244, 143, 177) !important;">cd</span><span style="color: gray"><br>&#215; </span><span style="color: rgb(244, 143, 177) !important;">clear</span><span style="color: gray"><br>&#215; </span><span style="color: rgb(244, 143, 177) !important;">help</span>';
+    history.push(output);
+    history.push("<br>");
+
+  } else if (command.split(" ")[0] == "cd") {
+    console.log("CD command detected");
+    var section_name: string = command.split(" ")[1];
+    console.log("Section name: " + section_name);
+
+    if (!section_name) {
+      console.log("No section name provided");
+      var output = `<span style="color: rgba(214, 13, 13, 0.722);">Usage: cd {section}</span>`;
+      history.push(output);
+      history.push("<br>");
+      
+    } 
+    // If section name is not one of the available sections
+    else if (["Home", "About", "Education", "Experience", "Projects", "Skills", "Contact"].indexOf(section_name) == -1) {
+      var output = `<span style="color: rgba(214, 13, 13, 0.722);">cd: no such section: ${section_name}</span>`;
+      history.push(output);
+      history.push("<br>");
+    }
   } else {
     // Handle output
     let first_word = command.split(' ')[0];
@@ -252,6 +292,23 @@ function submitCommand(command: string) {
 
   // Update the history
   $('.history').html(history.join('<br>'));
+
+  // Search the hisotry for any 2 consecutive <br> tags
+  // var index = historyElem?.search('<br><br>');
+  // if (index != -1) {
+  //   console.log("Found two consecutive <br> tags");
+
+  //   console.log("History before: " + historyElem);
+
+  //   // Remove the first <br> tag
+  //   historyElem = historyElem?.replace('<br><br>', '<br>');
+  //   history = [historyElem!];
+
+  //   console.log("Setting history to: " + historyElem);
+
+  //   // Set the history
+  //   $('.history').html(historyElem!);
+  // }
 
   // Scroll to the bottom of the screen
   $('section.terminal').scrollTop($('section.terminal').height() as number);
