@@ -17,12 +17,6 @@ export class TerminalComponent implements OnInit {
   userInput: HTMLElement | null = document.getElementById('user-input');
 
   data = [
-    // { 
-    //   action: 'type',
-    //   strings: ["npm install -g portfolio^400"],
-    //   output: '<span class="gray" style="color: gray">+emckevitt@0.10.2 installed</span><br>&nbsp;',
-    //   postDelay: 1000
-    // },
     { 
       action: 'type',
       strings: ["npm install -g portfolio^400"],
@@ -264,6 +258,9 @@ function submitCommand(command: string) {
 
   // Clear the input
   $('#user-input').val('');
+
+  // Scroll to the bottom of the screen
+  $('section.terminal').scrollTop($('.history').height() as number);
 
   // Shift focus to the input with id 'user-input'
   $('#user-input').focus();
