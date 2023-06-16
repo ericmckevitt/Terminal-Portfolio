@@ -77,14 +77,15 @@ box-shadow: 10px 10px 71px 0px rgba(0,0,0,0.5);
     
     position: absolute; 
     left: 18px;
-    top: 2px;
+    top: 2px !important;
     
     height: inherit;
 
     overflow: hidden;
     border-right: .139em solid white;
 
-    height: 13px;
+    height: 13px !important;
+    height: 18px !important;
 
     padding-right: 0px;
 
