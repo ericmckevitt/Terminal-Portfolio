@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import Typed from 'typed.js';
 
 
-//// Note: Maybe headline can be Full-Stack <Developer/>,
+//// Note: Maybe headline can be Full-Stack </Developer>,
 ////                             named Eric McKevitt.
 
 @Component({

@@ -1,46 +1,102 @@
-#navbar {
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    height: 100%;
-    width: 80px;
-    
-    background-color: #c4bbc3;
-    box-shadow: 0 0.25rem 1rem rgba(0, 0, 0, 0.08);
-    /* color: #333; */
-    transition: all 200ms ease-in-out;
-
-    opacity: 0.1;
-    filter: blur(4px);
+@font-face {
+    font-family: "San Francisco";
+    font-weight: 400;
+    src: url("https://applesocial.s3.amazonaws.com/assets/styles/fonts/sanfrancisco/sanfranciscodisplay-regular-webfont.woff");
 }
 
-#navbar:hover {
-    filter: blur(0px);
-    width: 300px;
-}
-
-#navbar * {
-    opacity: 1;
-    z-index: 5;
-}
-
-#navbar ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    color: white !important;
-}
-
-#navbar ul li a {
-    display: block;
-    padding: 20px;
-    text-decoration: none;
-    color: white !important;
-    font-size: 1.5rem;
-    font-weight: 600;
-    transition: all 200ms ease-in-out;
+:root {
+    --purple: rgb(123, 31, 162);
+    --violet: rgb(103, 58, 183);
+    --pink: rgb(244, 143, 177);
 }
 
 * {
+    margin: 0;
+    padding: 0;
+    font-family: "San Francisco", Arial, sans-serif;
+    box-sizing: border-box;
+    transition: all 0.2s ease-in-out;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: #232c33;
+}
+
+.navigation {
+    position: absolute;
+    height: 100vh;
+    width: 70px;
+    left: 0;
+    box-shadow: 10px 0 0 var(--violet);
+    overflow-x: hidden;
+    transition: width 0.2s ease-in-out;
+    display: flex;
     z-index: 4;
+    padding-right: 50px;
+}
+
+.navigation:hover {
+    width: 200px;
+    z-index: 3;
+    transition: width 0.2s ease-in-out !important;
+}
+
+.navigation ul {
+    width: 100%;
+    padding-left: 5px;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    margin: auto;
+    z-index: 15;
+}
+
+.navigation ul li {
+    position: relative;
+    list-style: none;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.navigation ul li.active {
+    background: var(--violet);
+    z-index: 4;
+}
+
+.navigation ul li a {
+    position: relative;
+    display: block;
+    width: 100%;
+    display: flex;
+    text-decoration: none;
+    color: #fff;
+}
+
+.navigation ul li a .icon {
+    position: relative;
+    display: block;
+    min-width: 60px;
+    height: 60px;
+    text-align: center;
+    line-height: 70px;
+}
+
+.navigation ul li a .icon ion-icon {
+    position: relative;
+    font-size: 1.5em;
+    z-index: 3;
+}
+
+.navigation ul li a .title {
+    position: relative;
+    display: block;
+    padding-left: 10px;
+    height: 60px;
+    line-height: 60px;
+    white-space: nowrap;
 }
