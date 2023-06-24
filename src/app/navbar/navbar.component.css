@@ -134,15 +134,17 @@ body {
         margin: 0;
     }
 
+    /* Icons */
     .navigation ul li a span:has(ion-icon) {
         padding: 0;
         margin: 0;
-        font-size: 1.1em;
+        font-size: 1.05em;
 
         line-height: 10px !important;
         height: 40px !important;
     }
     
+    /* Text below icons */
     .navigation ul li a span:not(:has(ion-icon)) {
         text-align: center;
         margin: 0px !important;

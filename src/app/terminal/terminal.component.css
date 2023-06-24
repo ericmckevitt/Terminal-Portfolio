@@ -107,3 +107,9 @@ section.terminal, .terminal-window-header {
 .manual-control-cursor {
     position: absolute; 
 }
+
+@media screen and (max-width: 600px) {
+    .terminal-window {
+        width: 100%;
+    }
+}
