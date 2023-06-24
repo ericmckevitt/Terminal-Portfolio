@@ -100,3 +100,61 @@ body {
     line-height: 60px;
     white-space: nowrap;
 }
+
+/* For screens below 864 pixels wide */
+@media screen and (max-width: 864px) {
+    /* The Navigation bar will become horizontal and go to the top */
+    .navigation {
+        top: 0;
+        flex-direction: row;
+        width: 100%;
+    }
+
+    .navigation ul {
+        position: fixed;
+        display: flex;
+        flex-direction: row;
+        justify-content: start !important;
+        align-items: start !important;
+        width: 100%;
+        top: 0;
+        height: 200px;
+
+    }
+
+    .navigation ul li {
+        margin: 0;
+        padding: 0;
+    }
+
+    .navigation ul li a {
+        display: flex;
+        flex-direction: column;
+        padding: 0;
+        margin: 0;
+    }
+
+    .navigation ul li a span:has(ion-icon) {
+        padding: 0;
+        margin: 0;
+        font-size: 1.1em;
+
+        line-height: 10px !important;
+        height: 40px !important;
+    }
+    
+    .navigation ul li a span:not(:has(ion-icon)) {
+        text-align: center;
+        margin: 0px !important;
+        padding: 0px !important;
+
+        line-height: 10px !important;
+
+        font-size: 0.8em;
+
+        position: absolute;
+        top: 0 !important;
+
+        opacity: 0.2;
+    }
+}
