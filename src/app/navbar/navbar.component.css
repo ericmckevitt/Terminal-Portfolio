@@ -101,6 +101,14 @@ body {
     white-space: nowrap;
 }
 
+/* Between 1010 and 864, make navtext smaller */
+@media only screen and (max-width: 1010px) and (min-width: 864px) {
+    /* Text below icons */
+    .navigation ul li a span:not(:has(ion-icon)) {
+        font-size: 0.8em;
+    }
+}
+
 /* For screens below 864 pixels wide */
 @media screen and (max-width: 864px) {
     /* The Navigation bar will become horizontal and go to the top */
@@ -119,7 +127,6 @@ body {
         width: 100%;
         top: 0;
         height: 200px;
-
     }
 
     .navigation ul li {
@@ -158,5 +165,62 @@ body {
         top: 0 !important;
 
         opacity: 0.2;
+    }
+}
+
+
+@media screen and (max-width: 500px) {
+
+    /* Icons */
+    .navigation ul li a span:has(ion-icon) {
+        font-size: 0.9em;
+        line-height: 0px !important;
+    }
+
+    /* Text below icons */
+    .navigation ul li a span:not(:has(ion-icon)) {
+        font-size: 0.7em;
+        line-height: 0px !important;
+    }
+
+    .navigation ul {
+        padding-top: 30px;
+    }
+}
+
+@media screen and (max-width: 434px) {
+
+    /* Icons */
+    .navigation ul li a span:has(ion-icon) {
+        min-width: none !important;
+    }
+
+    .navigation ul li a .icon {
+        min-width: 0px !important;
+    }
+
+    /* Text below icons */
+    .navigation ul li a span:not(:has(ion-icon)) {
+        display: none !important;
+    }
+
+    .navigation ul {
+        margin: auto !important;
+        width: 100% !important;
+        height: fit-content;
+        padding-bottom: 0px;
+
+        justify-content: space-around !important;
+    }
+
+    .navigation ul li {
+        padding: 0;
+        margin: 0;
+        width: 50px !important;
+    }
+
+    .navigation ul li a {
+        padding: 0;
+        margin: 0;
     }
 }
