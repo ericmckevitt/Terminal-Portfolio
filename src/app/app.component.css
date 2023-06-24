@@ -26,21 +26,13 @@ section#landing-page h1 {
     margin: auto;
     font-size:3em !important;
     color: rgb(238, 227, 237);
-    /* font-family: "Rubik", sans-serif; */
     font-family: "San Francisco", sans-serif;
     font-size: clamp(2em, 2vw, 4em);
-    /* font-weight: 450; */
     text-align: center;
-    /* margin-bottom: 0.8em; */
-    /* margin-bottom: 2em; */
 
     text-align: left; 
     line-height: 1.4em;
     margin-bottom: 0.4em;
-}
-
-section#landing-page * {
-    /* border: 0.5px dashed red; */
 }
 
 @keyframes background-pan {
